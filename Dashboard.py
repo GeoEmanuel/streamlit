@@ -14,7 +14,7 @@ arquivo = st.file_uploader("Escolha seu arquivo em *EXCEL*", type=['xlsx'])
 
 
 # Exibindo a previsão
-st.subheader('Previsão para os próximos meses')
+st.subheader('Previsão para proximos anos e meses')
 
 # Se o arquivo não existir faça
 if arquivo is not None:
@@ -27,11 +27,15 @@ if arquivo is not None:
             
             # Se as colunas estiverem presentes, cria um gráfico de linha com a coluna "Data" como índice
             # Grafico de linha
+            st.write("Gráfico de linha mostra o padrão encontrado nos anos anteriores e faz uma previsão nos proximos anos *A cada 4 Mêses* ")
+            
+            # (x='Data', y='Cadastro', title='Gráfico de Linhas Interativo')
             fig = px.line(df, x='Data', y='Cadastro', title='Gráfico de Linhas Interativo')
             st.plotly_chart(fig)
             
             # Cria um gráfico de barras com a coluna "Data" como índice e os valores da coluna "Criação"
             # Grafico de Barras
+            st.write("Grafico de Barras mostra o padrão encontrado nos anos anteriores e faz uma previsão nos proximos anos *Mês a Mês* ")
             st.bar_chart(df.set_index('Data')['Cadastro'])
             
         else:
